@@ -1,0 +1,319 @@
+// ---перенести до глобальних --------------------------------
+:root {
+  --white: #ffffff;
+  --text-error: #ff001b;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// -- узгодити контейнер --------------------------------
+.container {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+}
+// --------------------------
+.header {
+  background-color: #000;
+  padding-top: 40px;
+  padding-bottom: 22px;
+  background-repeat: no-repeat;
+  background-image: url(../images/main-header/home_mobile_background_1x.png);
+  background-position: center;
+  background-size: 100% 100%;
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    background-image: url(../images/main-header/home-mobile_background_2x.png);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 45px;
+    background-image: url(../images/main-header/home_tablet_background_1x.png);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+      background-image: url(../images/main-header/home_tablet_background_2x.png);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url(../images/main-header/home_desktop_background_1x.png);
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+      background-image: url(../images/main-header/home_desktop_background_2x.png);
+    }
+  }
+}
+
+// ------------------------
+//----New Styles------------------------
+
+.logo-main:hover {
+  -webkit-mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #000 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  -webkit-mask-size: 200%;
+  animation: shine 2s infinite;
+}
+
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+.menu-nav__item {
+  display: block;
+
+  transition: transform 250ms ease, box-shadow 250ms ease;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.15);
+    text-shadow: 0 0 5px #951418, 0 0 25px #951418, 0 0 50px #951418,
+      0 0 100px #951418;
+  }
+}
+
+.search-form {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 16px;
+}
+
+.search-form__input {
+  transition: border-bottom 500ms ease, box-shadow 500ms ease,
+    transform 500ms ease;
+
+  &:hover,
+  &:focus-within {
+    transform: scale(1.1);
+    border-bottom: 3px solid #9d1f23;
+    box-shadow: inset 3px -11px 25px -14px #a7151a;
+  }
+  &:hover + .search-form__button {
+    transform: scale(1.1);
+  }
+
+  &::placeholder {
+    color: #ffffff;
+  }
+}
+
+.search-form__button {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 0;
+  right: 0;
+}
+
+.search-form__icon:hover,
+.search-form__icon:focus {
+  transform: scale(1.4);
+}
+
+.error-text {
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+///--------////////////////////////////////
+
+.container-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo-main {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+
+  @media (min-width: 1280px) {
+    gap: 10px;
+  }
+
+  &__name {
+    @media (max-width: 767px) {
+      display: none;
+    }
+
+    font-family: inherit; //'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+  }
+}
+.logo-main__icon {
+  width: 32px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: auto;
+  cursor: pointer;
+  @media (min-width: 768px) {
+    gap: 40px;
+  }
+
+  &__item {
+    text-align: center;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+
+    font-family: inherit; //'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+
+    align-items: baseline;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+  }
+}
+
+//добавити сталь на сторінці бібліотеки на
+.current::after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 3px;
+  bottom: -3px; //поправити до -2px після додавання  шрифтів
+  background-color: var(--text-error);
+  transform: scaleX(1);
+}
+.search-form {
+  width: 280px;
+  // padding-top: 54px;
+  padding-bottom: 16px;
+
+  margin: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 394px;
+  }
+
+  &__input {
+    width: 100%;
+    min-height: 20px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.5px solid var(--white);
+
+    font-family: inherit; //'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    outline: none;
+  }
+
+  &__button {
+    background-color: transparent;
+    border: none;
+
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+::placeholder {
+  color: var(--white);
+  opacity: 1;
+}
+
+.error-text {
+  opacity: 0;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  align-items: center;
+  display: flex;
+  color: var(--text-error);
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.btn-container {
+  @media screen and (min-width: 320px) {
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    justify-content: space-between;
+    padding-top: 22px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 394px;
+  }
+}
