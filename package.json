@@ -18,13 +18,18 @@
     "url": "https://github.com/PetroMazuryk/all-movies/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "basiclightbox": "^5.0.4",
+    "firebase": "^9.16.0",
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
+    "browserify-zlib": "^0.2.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }

@@ -1,0 +1,83 @@
+.input__week__today {
+  display: none;
+}
+
+.input__week__today + .label__week__today {
+  border-radius: 25px;
+  display: inline-block;
+  height: 25px;
+  width: 90px;
+  position: relative;
+
+  font-size: 12px;
+
+  font-weight: 500;
+  line-height: 1.17;
+
+  border: 2px solid white;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.input__week__today + .label__week__today::before {
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  height: 17px;
+  width: 17px;
+  content: '';
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.input__week__today + .label__week__today::after {
+  width: 75px;
+  text-align: center;
+  z-index: 2;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.input__week__today + .label__week__today:active::before {
+  box-shadow: 0 0 2px 5px rgba(48, 48, 48, 0.7);
+  transition: all 0.5s ease;
+  background-color: #fff;
+}
+
+.input__week__today:not(:checked) + .label__week__today {
+  background-color: transparent;
+  text-align: right;
+}
+.input__week__today:not(:checked) + .label__week__today::after {
+  content: attr(data-unchecked);
+  right: 0;
+  left: auto;
+  opacity: 1;
+  color: #fff;
+}
+.input__week__today:not(:checked) + .label__week__today::before {
+  left: 2px;
+  background-color: #fff;
+}
+
+.input__week__today:checked + .label__week__today:after {
+  content: attr(data-checked);
+  left: 2px;
+  right: auto;
+  opacity: 1;
+  color: #fff;
+}
+.input__week__today:not(:checked) + .label__week__today::after {
+  left: 5px;
+}
+.input__week__today:checked + .label__week__today::before {
+  left: 67px;
+  background-color: #fff;
+}
