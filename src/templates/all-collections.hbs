@@ -1,0 +1,32 @@
+{{#each results}}
+  <li class='movie-card__item' data-id='{{id}}'>
+    <div class='poster-wrapper'>
+      {{#if poster_path}}
+        <img
+          src='https://image.tmdb.org/t/p/w500/{{poster_path}}'
+          alt='{{title}}'
+          class='movie-card__poster lazyload'
+          loading='lazy'
+          data-id='{{id}}'
+        />
+      {{else}}
+        <img
+          src='#'
+          alt='{{title}}'
+          class='movie-card__poster'
+          loading='lazy'
+          data-id='{{id}}'
+        />
+      {{/if}}
+    </div>
+    <div class='card-info'>
+      <h2 class='movie-info-title'> {{title}}</h2>
+      <div class='info-wrapper'>
+        <p class='info-item-genre'>{{genre_ids}}</p>
+        <p class='info-item-year'>{{release_date}}</p>
+        <p class='info-item-rating'><span class='rating-icon'>&#9733;</span>
+          {{vote_average}}</p>
+      </div>
+    </div>
+  </li>
+{{/each}}
