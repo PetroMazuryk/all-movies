@@ -2,6 +2,8 @@ import { Notify } from 'notiflix';
 import ApiTheMovies from './fetch-service';
 import allCollections from '../templates/all-collections.hbs';
 import { makeShortReleaseDate } from './validate-movie-data';
+import { makeGenresList } from './validate-movie-data';
+import { makeValidatesGenreName } from './validate-movie-data';
 
 export const apiTheMovies = new ApiTheMovies();
 const gallery = document.querySelector('.gallery');
@@ -19,7 +21,9 @@ function renderMarkupAllMovieCard(responseAll) {
 function onLoadAllMovies() {
   apiTheMovies
     .fetchAllFilms(apiTheMovies.page)
+    .then(makeValidatesGenreName)
     .then(makeShortReleaseDate)
     .then(renderMarkupAllMovieCard);
 }
 onLoadAllMovies();
+makeGenresList();

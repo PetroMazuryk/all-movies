@@ -8,13 +8,21 @@ export default class ApiTheMovies {
   constructor() {
     this.page = 1;
   }
-  // список всех популярных фільмів
 
+  // список всех популярных фільмів
   fetchAllFilms() {
     return axios(`${URL}/discover/movie?api_key=${API_KEY}&page=${this.page}`)
       .then(response => response.data)
       .catch(this.onError);
   }
+
+  // список жанрів
+  fetchAllgenres() {
+    return axios(`${URL}/genre/movie/list?api_key=${API_KEY}`)
+      .then(response => response.data.genres)
+      .catch(this.onError);
+  }
+
   onError() {
     return Notify.failure('Sorry this is error');
   }
