@@ -9,6 +9,9 @@ export default class ApiTheMovies {
     this.page = 1;
     this.searchValue = null;
   }
+  incrementPage() {
+    this.page += 1;
+  }
 
   resetPage() {
     this.page = 1;
@@ -30,10 +33,10 @@ export default class ApiTheMovies {
 
   // список в пошуку по назві
   fetchBySearch() {
-    return axios
-      .get(
-        `${URL}/search/movie?api_key=${API_KEY}&query=${this.searchValue}&page=${this.page}`
-      )
+    // console.log(this); // ApiTheMovies {page: 1, searchValue: 'cat'}
+    return axios(
+      `${URL}/search/movie?api_key=${API_KEY}&query=${this.searchValue}&page=${this.page}`
+    )
       .then(response => response.data)
       .catch(this.onError);
   }

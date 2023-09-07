@@ -1,6 +1,7 @@
 import { Notify } from 'notiflix';
 import ApiTheMovies from './fetch-service';
 import allCollections from '../templates/all-collections.hbs';
+
 import { makeShortReleaseDate } from './validate-movie-data';
 import { makeGenresList } from './validate-movie-data';
 import { makeValidatesGenreName } from './validate-movie-data';
@@ -10,10 +11,11 @@ const gallery = document.querySelector('.gallery');
 
 function renderMarkupAllMovieCard(responseAll) {
   const markup = allCollections(responseAll);
+
   gallery.insertAdjacentHTML('beforeend', markup);
   if (!markup) {
-    Notiflix.Notify.warning(
-      "We're sorry, but you've reached the end of search results."
+    Notify.warning(
+      "We're  sorry, but you've reached the end of search results."
     );
   }
 }

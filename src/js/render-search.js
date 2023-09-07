@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix';
 import allCollections from '../templates/all-collections.hbs';
 import { apiTheMovies } from './render-collections';
 import { makeShortReleaseDate } from './validate-movie-data';
@@ -15,9 +15,11 @@ function onSearch(e) {
   e.preventDefault();
 
   apiTheMovies.searchValue = input.value.trim();
+  // apiTheMovies.searchValue = e.currentTarget.elements.searchQuery.value;
+  // console.log(apiTheMovies.searchValue); // cat
 
-  if (!apiTheMovies.searchValue) {
-    Notiflix.Notify.info('Enter the name movie');
+  if (apiTheMovies.searchValue == 0) {
+    Notify.info('Enter the name movie');
     warning.style.color = '#FF001B';
     warning.style.textAlign = 'center';
     warning.style.marginBottom = '10px';
@@ -33,11 +35,12 @@ function onSearch(e) {
     .then(makeValidatesGenreName)
     .then(makeShortReleaseDate)
     .then(showMovie);
-
+  Notify.info(`Good ${apiTheMovies.searchValue}`);
   form.elements.searchQuery.value = '';
 }
 
 function showMovie(resultSearch) {
+  // console.log(resultSearch.total_results); // 3079
   if (resultSearch.total_results == 0) {
     warning.style.color = '#FF001B';
     warning.style.textAlign = 'center';
@@ -48,6 +51,7 @@ function showMovie(resultSearch) {
     }, 3000);
     return;
   }
+  Notify.success(`Find result  ${resultSearch.total_results}`);
   const markupSearch = allCollections(resultSearch);
   gallery.innerHTML = markupSearch;
 }
