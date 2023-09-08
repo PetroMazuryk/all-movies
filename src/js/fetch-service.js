@@ -9,13 +9,6 @@ export default class ApiTheMovies {
     this.page = 1;
     this.searchQuery = '';
   }
-  incrementPage() {
-    this.page += 1;
-  }
-
-  resetPage() {
-    this.page = 1;
-  }
 
   // список всіх популярних фільмів
   fetchAllFilms() {
@@ -38,12 +31,29 @@ export default class ApiTheMovies {
       `${URL}/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}`
     )
       .then(response => {
-        response.data;
-        this.page += 1;
+        // response.data;
+        this.incrementPage();
         // console.log('Після запиту, якщо все ОК', this);
         //Після запиту, якщо все ОК ApiTheMovies {page: 2, searchQuery: 'cat'}}
+        return response.data.results;
       })
       .catch(this.onError);
+  }
+
+  incrementPage() {
+    this.page += 1;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  get query() {
+    return this.searchQuery;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
   }
 
   onError() {
