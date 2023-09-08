@@ -7,7 +7,7 @@ const API_KEY = 'ba520957137ad46ba4502dabb5237445';
 export default class ApiTheMovies {
   constructor() {
     this.page = 1;
-    this.searchValue = null;
+    this.searchQuery = '';
   }
   incrementPage() {
     this.page += 1;
@@ -17,7 +17,7 @@ export default class ApiTheMovies {
     this.page = 1;
   }
 
-  // список всех популярных фільмів
+  // список всіх популярних фільмів
   fetchAllFilms() {
     return axios(`${URL}/discover/movie?api_key=${API_KEY}&page=${this.page}`)
       .then(response => response.data)
@@ -33,11 +33,16 @@ export default class ApiTheMovies {
 
   // список в пошуку по назві
   fetchBySearch() {
-    // console.log(this); // ApiTheMovies {page: 1, searchValue: 'cat'}
+    // console.log('До запиту', this); //До запиту ApiTheMovies {page: 1, searchQuery: 'cat'}
     return axios(
-      `${URL}/search/movie?api_key=${API_KEY}&query=${this.searchValue}&page=${this.page}`
+      `${URL}/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}`
     )
-      .then(response => response.data)
+      .then(response => {
+        response.data;
+        this.page += 1;
+        // console.log('Після запиту, якщо все ОК', this);
+        //Після запиту, якщо все ОК ApiTheMovies {page: 2, searchQuery: 'cat'}}
+      })
       .catch(this.onError);
   }
 
