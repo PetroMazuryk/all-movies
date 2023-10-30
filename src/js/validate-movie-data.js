@@ -44,7 +44,7 @@ export function makeValidatesGenreName(response) {
       });
       if (movieEl.genre_ids.length > 3) {
         movieEl.genre_ids = movieEl.genre_ids.slice(0, 2);
-        movieEl.genre_ids.push('Other...');
+        movieEl.genre_ids.push(' Other...');
       }
     } else {
       movieEl.genre_ids = '';

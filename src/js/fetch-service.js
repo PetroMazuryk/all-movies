@@ -35,7 +35,7 @@ export default class ApiTheMovies {
         this.incrementPage();
         // console.log('Після запиту, якщо все ОК', this);
         //Після запиту, якщо все ОК ApiTheMovies {page: 2, searchQuery: 'cat'}}
-        return response.data.results;
+        return response.data;
       })
       .catch(this.onError);
   }
@@ -43,7 +43,6 @@ export default class ApiTheMovies {
   incrementPage() {
     this.page += 1;
   }
-
   resetPage() {
     this.page = 1;
   }
